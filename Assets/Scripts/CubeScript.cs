@@ -6,6 +6,7 @@ public class CubeScript : MonoBehaviour
 {
     public Vector3 _Pos;
     Rigidbody _Rigid;
+
 	// Use this for initialization
 	void Awake ()
     {
@@ -17,7 +18,7 @@ public class CubeScript : MonoBehaviour
     {
 		if(Input.GetKeyUp(KeyCode.Space))
         {
-            transform.position = _Pos;
+            transform.localPosition = _Pos;
             _Rigid.velocity = Vector3.zero;
         }
 	}

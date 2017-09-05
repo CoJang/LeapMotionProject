@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scene/Room.unity
+- path: Assets/Scene/GrapsTest.unity
   isLoaded: 1
   isActive: 1

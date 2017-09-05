@@ -273,6 +273,7 @@
     <Compile Include="Assets\LeapMotion\Modules\InteractionEngine\Scripts\Utility\PhysicsCallbacks.cs" />
     <Compile Include="Assets\Scripts\CubeScript.cs" />
     <Compile Include="Assets\Scripts\MonitorColl.cs" />
+    <Compile Include="Assets\Scripts\MonitorIter.cs" />
     <Compile Include="Assets\Scripts\TV_Change.cs" />
   </ItemGroup>
   <ItemGroup>

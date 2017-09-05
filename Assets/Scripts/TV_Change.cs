@@ -6,6 +6,7 @@ public class TV_Change : MonoBehaviour
 {
     public Material[] _mat;
     public int _index;
+    public MonitorIter _Iter;
 
     Renderer _renderer;
     bool handsoff;
@@ -41,6 +42,7 @@ public class TV_Change : MonoBehaviour
         {
             handsoff = true;
             _renderer.sharedMaterial = _mat[_index++];
+            _Iter.IndexChanged();
 
             _index = _index % 3;
             _timer = false;
@@ -52,6 +54,5 @@ public class TV_Change : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.3f);
 
         _timer = true;
-        print("Coroutine Called");
     }
 }
