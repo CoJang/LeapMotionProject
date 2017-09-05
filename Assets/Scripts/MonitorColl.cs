@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class MonitorColl : MonoBehaviour
 {
-    BoxCollider Collider;
+    //BoxCollider Collider;
 
 
 	// Use this for initialization
 	void Awake ()
     {
-        Collider = GetComponent<BoxCollider>();
+        //Collider = GetComponent<BoxCollider>();
 
     }
 	
@@ -22,7 +22,7 @@ public class MonitorColl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print("Something Collition");
+        //print("Something Collition");
 
         if(other.tag == "Hands")
         {
