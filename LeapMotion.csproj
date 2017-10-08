@@ -274,9 +274,12 @@
     <Compile Include="Assets\Scripts\CubeScript.cs" />
     <Compile Include="Assets\Scripts\DummyMove.cs" />
     <Compile Include="Assets\Scripts\FingerDirectionCheck.cs" />
+    <Compile Include="Assets\Scripts\HammerMove.cs" />
     <Compile Include="Assets\Scripts\MonitorColl.cs" />
     <Compile Include="Assets\Scripts\MonitorIter.cs" />
+    <Compile Include="Assets\Scripts\MotionTest.cs" />
     <Compile Include="Assets\Scripts\SendMessege.cs" />
+    <Compile Include="Assets\Scripts\Swipe.cs" />
     <Compile Include="Assets\Scripts\TV_Change.cs" />
   </ItemGroup>
   <ItemGroup>
