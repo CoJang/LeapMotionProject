@@ -17,7 +17,7 @@ public class DummyMove : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Cube")
+        if(other.tag == "Cube" || other.tag == "Hammer")
         {
             agent.enabled = false;
         }

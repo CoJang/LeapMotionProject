@@ -10,28 +10,19 @@ public class HammerMove : MonoBehaviour
     public Transform LeftSwing;
     public Transform RightSwing;
 
-    //Quaternion LeftQ;
-    //Quaternion RightQ;
+    public Transform LeftDoorGreed;
+    public Transform RightDoorGreed;
 
     // Use this for initialization
     void Start ()
     {
         _transform = transform;
-        //LeftQ = LeftSwing.rotation;
-        //RightQ = RightSwing.rotation;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
 
-    }
-
-
-    public void Move(Vector3 dstPosition, float moveTime, float delayTime, Action callback)
-    {
-        dstPosition.z = _transform.position.z;
-        StartCoroutine(UpdateMove(dstPosition, moveTime, delayTime, callback));
     }
 
     IEnumerator UpdateMove(Vector3 dstPosition, float moveTime, float delayTime, Action callback)
@@ -45,14 +36,11 @@ public class HammerMove : MonoBehaviour
 
         yield return new WaitForSeconds(delayTime);
 
-        //for (float rate = 0.0f; rate < 1.0f; rate += Time.deltaTime / moveTime)
-        //{
-        //    transform.position = Vector3.Lerp(dstPosition, srcPosition, rate);
-        //    yield return null;
-        //}
-
         if (callback != null)
+        {
             callback();
+
+        }
     }
 
     public void Rotate(Quaternion dstQuaternion, float rotateTime, float delayTime, Action callback)
@@ -71,12 +59,6 @@ public class HammerMove : MonoBehaviour
         }
 
         yield return new WaitForSeconds(delayTime);
-
-        //for(float rate = 0.0f; rate < 1.0f; rate += Time.deltaTime / rotateTime)
-        //{
-        //    transform.rotation = Quaternion.Lerp(dstQuaternion, srcQuaternion, rate);
-        //    yield return null;
-        //}
 
         if(callback != null)
         {
