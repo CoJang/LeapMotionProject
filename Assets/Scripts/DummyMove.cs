@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class DummyMove : MonoBehaviour
 {
+    [SerializeField] QuadInteraction _quad;
     public Transform goal;
     NavMeshAgent agent;
 
@@ -18,6 +19,11 @@ public class DummyMove : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Cube" || other.tag == "Hammer")
+        {
+            agent.enabled = false;
+        }
+
+        if (other.tag == "Door" && _quad.GetDoorState())
         {
             agent.enabled = false;
         }
