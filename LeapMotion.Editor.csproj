@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{5D5B2C87-505A-51D6-3D42-60128B06B6CC}</ProjectGuid>
+    <ProjectGuid>{6BEA643F-D073-EA20-749C-ACDDCDE65D57}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -120,9 +120,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="LeapMotion.csproj">
-      <Project>{5994B7E8-6308-544D-B221-218DFCFA5728}</Project>
-      <Name>LeapMotion</Name>
+    <ProjectReference Include="LeapMotionProject.csproj">
+      <Project>{C0354021-B3B7-43AE-5E24-9F7F344ECA48}</Project>
+      <Name>LeapMotionProject</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

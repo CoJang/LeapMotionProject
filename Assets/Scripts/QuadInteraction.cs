@@ -5,7 +5,7 @@ using System;
 
 public class QuadInteraction : MonoBehaviour
 {
-    TrapMove _HM;
+    static TrapMove _HM;
     TrapMove _LFD;
     TrapMove _RTD;
 
@@ -18,6 +18,8 @@ public class QuadInteraction : MonoBehaviour
         _HM = GameObject.Find("RealHammer").GetComponent<TrapMove>();
         _LFD = GameObject.Find("LeftDoor").GetComponent<TrapMove>();
         _RTD = GameObject.Find("RightDoor").GetComponent<TrapMove>();
+
+
 
         IsSwinging = false;
         IsBreaked = false;
@@ -44,6 +46,8 @@ public class QuadInteraction : MonoBehaviour
     Action CallbackSwing = () =>
     {
         IsSwinging = false;
+        //_HM.transform.rotation = _HM.Origin_transform.rotation;
+        //print("CallBacked");
     };
 
     Action CallbackBreak = () =>
@@ -63,7 +67,7 @@ public class QuadInteraction : MonoBehaviour
             IsSwinging = true;
             print("Left Quad Touched");
             _HM.Rotate(_HM.LeftSwing.rotation, _HM.HammerSpeed, 0.0f, CallbackSwing);
-            
+            //_HM.LeftSwing.rotation = new Quaternion(_HM.LeftSwing.rotation.x + 360, _HM.LeftSwing.rotation.y, _HM.LeftSwing.rotation.z, _HM.LeftSwing.rotation.w);
         }
 
         if (other.tag == "RightQuad" && !IsSwinging)
@@ -71,6 +75,7 @@ public class QuadInteraction : MonoBehaviour
             IsSwinging = true;
             print("Right Quad Touched");
             _HM.Rotate(_HM.RightSwing.rotation, _HM.HammerSpeed, 0.0f, CallbackSwing);
+           
         }
 
         if (other.tag == "UpQuad" && !IsBreaked)

@@ -5,7 +5,7 @@ using System;
 
 public class TrapMove : MonoBehaviour
 {
-    Transform _transform;
+    public Transform Origin_transform;
 
     public Transform LeftSwing;
     public Transform RightSwing;
@@ -19,7 +19,7 @@ public class TrapMove : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        _transform = transform;
+        Origin_transform = transform;
     }
 	
 	// Update is called once per frame
@@ -28,9 +28,47 @@ public class TrapMove : MonoBehaviour
 
     }
 
+
+    public void Move(Vector3 dstPosition, float rotateTime, float delayTime, Action callback)
+    {
+        StartCoroutine(UpdateMove(dstPosition, rotateTime, delayTime, callback));
+    }
+
+    public void Break(Quaternion dstQuaternion, float rotateTime, float delayTime, Action callback)
+    {
+        StartCoroutine(UpdateBreak(dstQuaternion, rotateTime, delayTime, callback));
+    }
+
+    public void Rotate(Quaternion dstQuaternion, float rotateTime, float delayTime, Action callback)
+    {
+        StartCoroutine(UpdateRotate(dstQuaternion, rotateTime, delayTime, callback));
+    }
+
+    IEnumerator UpdateRotate(Quaternion dstQuaternion, float rotateTime, float delayTime, Action callback)
+    {
+        Quaternion srcQuaternion = transform.rotation;
+
+        for (float rate = 0.0f; rate < 1.0f; rate += Time.deltaTime / rotateTime)
+        {
+            transform.rotation = new Quaternion(Mathf.LerpAngle(srcQuaternion.x, dstQuaternion.x, rate), 
+                                                Mathf.LerpAngle(srcQuaternion.y, dstQuaternion.y, rate),
+                                                Mathf.LerpAngle(srcQuaternion.z, dstQuaternion.z, rate),
+                                                Mathf.LerpAngle(srcQuaternion.w, dstQuaternion.w, rate));
+
+            yield return null;
+        }
+        yield return new WaitForSeconds(delayTime);
+
+        if (callback != null)
+        {
+            callback();
+        }
+    }
+
     IEnumerator UpdateMove(Vector3 dstPosition, float moveTime, float delayTime, Action callback)
     {
         Vector3 srcPosition = transform.position;
+
         for (float rate = 0.0f; rate < 1.0f; rate += Time.deltaTime / moveTime)
         {
             transform.position = Vector3.Lerp(srcPosition, dstPosition, rate);
@@ -40,35 +78,6 @@ public class TrapMove : MonoBehaviour
         yield return new WaitForSeconds(delayTime);
 
         if (callback != null)
-        {
-            callback();
-
-        }
-    }
-
-    public void Rotate(Quaternion dstQuaternion, float rotateTime, float delayTime, Action callback)
-    {
-        StartCoroutine(UpdateRotate(dstQuaternion, rotateTime, delayTime, callback));
-    }
-
-    public void Break(Quaternion dstQuaternion, float rotateTime, float delayTime, Action callback)
-    {
-        StartCoroutine(UpdateBreak(dstQuaternion, rotateTime, delayTime, callback));
-    }
-
-    IEnumerator UpdateRotate(Quaternion dstQuaternion, float rotateTime, float delayTime, Action callback)
-    {
-        Quaternion srcQuaternion = transform.rotation;
-
-        for(float rate = 0.0f; rate < 1.0f; rate += Time.deltaTime / rotateTime)
-        {
-            transform.rotation = Quaternion.Lerp(srcQuaternion, dstQuaternion, rate);
-            yield return null;
-        }
-
-        yield return new WaitForSeconds(delayTime);
-
-        if(callback != null)
         {
             callback();
         }
@@ -82,6 +91,7 @@ public class TrapMove : MonoBehaviour
         for (float rate = 0.0f; rate < 1.0f; rate += Time.deltaTime / rotateTime)
         {
             transform.rotation = Quaternion.Lerp(srcQuaternion, dstQuaternion, rate);
+            
             yield return null;
         }
 

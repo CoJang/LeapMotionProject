@@ -273,16 +273,17 @@
     <Compile Include="Assets\LeapMotion\Modules\InteractionEngine\Scripts\Utility\InteractionControllerSwitcher.cs" />
     <Compile Include="Assets\LeapMotion\Modules\InteractionEngine\Scripts\Utility\KabschSolver.cs" />
     <Compile Include="Assets\LeapMotion\Modules\InteractionEngine\Scripts\Utility\PhysicsCallbacks.cs" />
+    <Compile Include="Assets\Scripts\CreatSection2Dummy.cs" />
     <Compile Include="Assets\Scripts\CubeScript.cs" />
     <Compile Include="Assets\Scripts\DummyMove.cs" />
     <Compile Include="Assets\Scripts\FingerDirectionCheck.cs" />
-    <Compile Include="Assets\Scripts\TrapMove.cs" />
     <Compile Include="Assets\Scripts\MonitorColl.cs" />
     <Compile Include="Assets\Scripts\MonitorIter.cs" />
     <Compile Include="Assets\Scripts\MotionTest.cs" />
     <Compile Include="Assets\Scripts\QuadInteraction.cs" />
     <Compile Include="Assets\Scripts\Swipe.cs" />
     <Compile Include="Assets\Scripts\TV_Change.cs" />
+    <Compile Include="Assets\Scripts\TrapMove.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\LeapMotion\Core\Dependencies.txt" />
