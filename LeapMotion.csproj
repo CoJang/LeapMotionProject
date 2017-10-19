@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.6.0f3</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -277,10 +275,12 @@
     <Compile Include="Assets\Scripts\CubeScript.cs" />
     <Compile Include="Assets\Scripts\DummyMove.cs" />
     <Compile Include="Assets\Scripts\FingerDirectionCheck.cs" />
+    <Compile Include="Assets\Scripts\HammerMove.cs" />
     <Compile Include="Assets\Scripts\MonitorColl.cs" />
     <Compile Include="Assets\Scripts\MonitorIter.cs" />
     <Compile Include="Assets\Scripts\MotionTest.cs" />
     <Compile Include="Assets\Scripts\QuadInteraction.cs" />
+    <Compile Include="Assets\Scripts\SendMessege.cs" />
     <Compile Include="Assets\Scripts\Swipe.cs" />
     <Compile Include="Assets\Scripts\TV_Change.cs" />
     <Compile Include="Assets\Scripts\TrapMove.cs" />

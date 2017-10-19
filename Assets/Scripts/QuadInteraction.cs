@@ -15,10 +15,9 @@ public class QuadInteraction : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        _HM = GameObject.Find("RealHammer").GetComponent<TrapMove>();
+        _HM = GameObject.Find("Hammers").GetComponent<TrapMove>();
         _LFD = GameObject.Find("LeftDoor").GetComponent<TrapMove>();
         _RTD = GameObject.Find("RightDoor").GetComponent<TrapMove>();
-
 
 
         IsSwinging = false;
@@ -28,8 +27,8 @@ public class QuadInteraction : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        
 
+        
     }
     
     public void OnCorrect()
@@ -50,7 +49,7 @@ public class QuadInteraction : MonoBehaviour
         //print("CallBacked");
     };
 
-    Action CallbackBreak = () =>
+     Action CallbackBreak = () =>
     {
         IsBreaked = false;
     };
@@ -60,22 +59,29 @@ public class QuadInteraction : MonoBehaviour
         IsBreaked = false;
     }
 
+    public void SetSwingtime()
+    {
+        IsSwinging = false;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "LeftQuad" && !IsSwinging)
         {
             IsSwinging = true;
             print("Left Quad Touched");
-            _HM.Rotate(_HM.LeftSwing.rotation, _HM.HammerSpeed, 0.0f, CallbackSwing);
-            //_HM.LeftSwing.rotation = new Quaternion(_HM.LeftSwing.rotation.x + 360, _HM.LeftSwing.rotation.y, _HM.LeftSwing.rotation.z, _HM.LeftSwing.rotation.w);
+
+            _HM.LeftSwing();
+            Invoke("SetSwingtime", 1.0f);
         }
 
         if (other.tag == "RightQuad" && !IsSwinging)
         {
             IsSwinging = true;
             print("Right Quad Touched");
-            _HM.Rotate(_HM.RightSwing.rotation, _HM.HammerSpeed, 0.0f, CallbackSwing);
-           
+
+            _HM.RightSwing();
+            Invoke("SetSwingtime", 1.0f);
         }
 
         if (other.tag == "UpQuad" && !IsBreaked)
@@ -84,7 +90,7 @@ public class QuadInteraction : MonoBehaviour
             print("Up Quad Touched");
             _LFD.Break(_LFD.LeftDoorGreed.rotation, _LFD.DoorSpeed, 0.0f, null);
             _RTD.Break(_RTD.RightDoorGreed.rotation, _RTD.DoorSpeed, 0.0f, null);
-            Invoke("SetCooltime", 2.0f);
+            Invoke("SetCooltime", 1.4f);
         }
 
         if (other.tag == "DownQuad")

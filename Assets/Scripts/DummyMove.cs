@@ -23,9 +23,24 @@ public class DummyMove : MonoBehaviour
             agent.enabled = false;
         }
 
-        if (other.tag == "Door" && _quad.GetDoorState())
+        if (other.tag == "Door")
+        {
+            if (_quad.GetDoorState())
+                agent.enabled = false;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Cube" || other.tag == "Hammer")
         {
             agent.enabled = false;
+        }
+
+        if (other.tag == "Door")
+        {
+            if (_quad.GetDoorState())
+                agent.enabled = false;
         }
     }
 }

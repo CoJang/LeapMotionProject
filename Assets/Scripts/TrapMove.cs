@@ -7,8 +7,8 @@ public class TrapMove : MonoBehaviour
 {
     public Transform Origin_transform;
 
-    public Transform LeftSwing;
-    public Transform RightSwing;
+    public Transform LeftHammer;
+    public Transform RightHammer;
 
     public Transform LeftDoorGreed;
     public Transform RightDoorGreed;
@@ -16,18 +16,35 @@ public class TrapMove : MonoBehaviour
     public float DoorSpeed = 1.0f;
     public float HammerSpeed = 0.5f;
 
+    Animator LeftSwing_Ani;
+    Animator RightSwing_Ani;
+
     // Use this for initialization
     void Start ()
     {
         Origin_transform = transform;
+        LeftSwing_Ani = LeftHammer.GetComponentInChildren<Animator>();
+        RightSwing_Ani = RightHammer.GetComponentInChildren<Animator>();
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
+        //transform.rotation = new Quaternion(transform.rotation.x + 1, transform.rotation.y, transform.rotation.z, transform.rotation.w);
+        //transform.rotation. = new Quaternion(transform.rotation.x + 1, transform.rotation.y, transform.rotation.z, transform.rotation.w);
+        //transform.eulerAngles = new Vector3(transform.rotation.x + 1, transform.rotation.y, transform.rotation.z);
 
     }
 
+    public void LeftSwing()
+    {
+        LeftSwing_Ani.SetTrigger("LeftSwing");
+    }
+
+    public void RightSwing()
+    {
+        RightSwing_Ani.SetTrigger("RightSwing");
+    }
 
     public void Move(Vector3 dstPosition, float rotateTime, float delayTime, Action callback)
     {
@@ -50,7 +67,7 @@ public class TrapMove : MonoBehaviour
 
         for (float rate = 0.0f; rate < 1.0f; rate += Time.deltaTime / rotateTime)
         {
-            transform.rotation = new Quaternion(Mathf.LerpAngle(srcQuaternion.x, dstQuaternion.x, rate), 
+            transform.rotation = new Quaternion(Mathf.LerpAngle(srcQuaternion.x, dstQuaternion.x, rate),
                                                 Mathf.LerpAngle(srcQuaternion.y, dstQuaternion.y, rate),
                                                 Mathf.LerpAngle(srcQuaternion.z, dstQuaternion.z, rate),
                                                 Mathf.LerpAngle(srcQuaternion.w, dstQuaternion.w, rate));
