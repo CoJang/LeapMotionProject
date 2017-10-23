@@ -9,6 +9,7 @@ public class TrapMove : MonoBehaviour
 
     public Transform LeftHammer;
     public Transform RightHammer;
+    public Transform Section3Pad;
 
     public Transform LeftDoorGreed;
     public Transform RightDoorGreed;
@@ -18,6 +19,7 @@ public class TrapMove : MonoBehaviour
 
     Animator LeftSwing_Ani;
     Animator RightSwing_Ani;
+    Animator Section3Pad_Ani;
 
     // Use this for initialization
     void Start ()
@@ -25,6 +27,7 @@ public class TrapMove : MonoBehaviour
         Origin_transform = transform;
         LeftSwing_Ani = LeftHammer.GetComponentInChildren<Animator>();
         RightSwing_Ani = RightHammer.GetComponentInChildren<Animator>();
+        Section3Pad_Ani = Section3Pad.GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
@@ -44,6 +47,11 @@ public class TrapMove : MonoBehaviour
     public void RightSwing()
     {
         RightSwing_Ani.SetTrigger("RightSwing");
+    }
+
+    public void RotatePad()
+    {
+        Section3Pad_Ani.SetTrigger("Rotate");
     }
 
     public void Move(Vector3 dstPosition, float rotateTime, float delayTime, Action callback)

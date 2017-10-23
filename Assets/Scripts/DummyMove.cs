@@ -18,29 +18,51 @@ public class DummyMove : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Cube" || other.tag == "Hammer")
+        if(other.tag == "Hammer" && gameObject.tag != "Hero C")
         {
             agent.enabled = false;
         }
 
         if (other.tag == "Door")
         {
-            if (_quad.GetDoorState())
+            if (_quad.GetDoorState() && gameObject.tag != "Hero B")
                 agent.enabled = false;
+        }
+
+        if(other.tag == "Pad")
+        {
+            if (_quad.GetPadState())
+                agent.enabled = false;
+
+            print("Section3 Enterd!");
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Cube" || other.tag == "Hammer")
+        if (other.tag == "Hammer" && gameObject.tag != "Hero C")
         {
             agent.enabled = false;
         }
 
         if (other.tag == "Door")
         {
-            if (_quad.GetDoorState())
+            if (_quad.GetDoorState() && gameObject.tag != "Hero B")
                 agent.enabled = false;
+        }
+
+        if (other.tag == "Pad")
+        {
+            if (_quad.GetPadState())
+                agent.enabled = false;
+        }
+    }
+
+    private void Update()
+    {
+        if(transform.position.y < -70)
+        {
+            Destroy(gameObject);
         }
     }
 }
