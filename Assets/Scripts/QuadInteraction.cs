@@ -17,10 +17,10 @@ public class QuadInteraction : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        //_HM = GameObject.Find("Hammers").GetComponent<TrapMove>();
-        //_LFD = GameObject.Find("LeftDoor").GetComponent<TrapMove>();
-        //_RTD = GameObject.Find("RightDoor").GetComponent<TrapMove>();
-        //_PAD = GameObject.Find("Trap").GetComponent<TrapMove>();
+        _HM = GameObject.Find("Hammers").GetComponent<TrapMove>();
+        _LFD = GameObject.Find("LeftDoor").GetComponent<TrapMove>();
+        _RTD = GameObject.Find("RightDoor").GetComponent<TrapMove>();
+        _PAD = GameObject.Find("Trap").GetComponent<TrapMove>();
     }
 	
 	// Update is called once per frame
@@ -90,34 +90,18 @@ public class QuadInteraction : MonoBehaviour
 
         if (other.tag == "UpQuad" && !IsRotating)
         {
-            IsRotating = true;
-
             _PAD.RotatePad();
+            IsRotating = true;
             Invoke("SetRotateTime", 1.2f);
         }
 
         if (other.tag == "DownQuad" && !IsBreaked)
         {
-            IsBreaked = true;
             print("Up Quad Touched");
             _LFD.Break(_LFD.LeftDoorGreed.rotation, _LFD.DoorSpeed, 0.0f, null);
             _RTD.Break(_RTD.RightDoorGreed.rotation, _RTD.DoorSpeed, 0.0f, null);
+            IsBreaked = true;
             Invoke("SetCoolTime", 1.4f);
-        }
-
-        if(other.tag == "Exit")
-        {
-            print("Exit Touched");
-        }
-
-        if (other.tag == "Play")
-        {
-            print("Play Touched");
-        }
-
-        if (other.tag == "Setting")
-        {
-            print("Setting Touched");
         }
     }
 

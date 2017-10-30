@@ -42,9 +42,10 @@ public class TV_Change : MonoBehaviour
         {
             handsoff = true;
             _renderer.sharedMaterial = _mat[_index++];
+            _index = _index % 3;
+
             _Iter.IndexChanged();
 
-            _index = _index % 3;
             _timer = false;
         }
     }

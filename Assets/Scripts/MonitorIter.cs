@@ -33,14 +33,14 @@ public class MonitorIter : MonoBehaviour
 
             case 1:
                 _renderer[0].sharedMaterial = _mat[1];
-                _renderer[1].sharedMaterial = _mat[0];
-                _renderer[2].sharedMaterial = _mat[2];
+                _renderer[1].sharedMaterial = _mat[2];
+                _renderer[2].sharedMaterial = _mat[0];
                 break;
 
             case 2:
                 _renderer[0].sharedMaterial = _mat[2];
-                _renderer[1].sharedMaterial = _mat[1];
-                _renderer[2].sharedMaterial = _mat[0];
+                _renderer[1].sharedMaterial = _mat[0];
+                _renderer[2].sharedMaterial = _mat[1];
                 break;
         }
     }
