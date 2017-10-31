@@ -7,13 +7,20 @@ using UnityEngine.AI;
 public class DummyMove : MonoBehaviour
 {
     [SerializeField] QuadInteraction _quad;
-    public Transform goal;
+    [SerializeField] Transform goal;
     NavMeshAgent agent;
 
-    void Start()
-    {  
+    private void Awake()
+    {
         agent = GetComponent<NavMeshAgent>();
-        agent.destination = goal.position;
+        
+    }
+
+    void Start()
+    {
+        //agent.enabled = true;
+        //agent.destination = goal.position;
+        agent.destination = new Vector3(0.266f, 20.867f, -54.595f);
     }
 
     private void OnTriggerEnter(Collider other)

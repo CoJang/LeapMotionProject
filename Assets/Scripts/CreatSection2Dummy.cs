@@ -5,7 +5,7 @@ using UnityEngine;
 public class CreatSection2Dummy : MonoBehaviour
 {
     public Transform OriginPos;
-    [SerializeField] GameObject DummyHero;
+    [SerializeField] GameObject HeroC;
 
 	// Use this for initialization
 	void Start ()
@@ -20,7 +20,7 @@ public class CreatSection2Dummy : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            Instantiate(DummyHero, OriginPos);
+            Instantiate(HeroC, OriginPos);
         }
     }
 }
