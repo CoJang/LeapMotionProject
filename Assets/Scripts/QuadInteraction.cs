@@ -5,10 +5,7 @@ using System;
 
 public class QuadInteraction : MonoBehaviour
 {
-    static TrapMove _HM;
-    TrapMove _LFD;
-    TrapMove _RTD;
-    TrapMove _PAD;
+    static public TrapMove _Traps;
 
     static bool IsSwinging = false;
     static bool IsBreaked = false;
@@ -17,10 +14,7 @@ public class QuadInteraction : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        _HM = GameObject.Find("Hammers").GetComponent<TrapMove>();
-        _LFD = GameObject.Find("LeftDoor").GetComponent<TrapMove>();
-        _RTD = GameObject.Find("RightDoor").GetComponent<TrapMove>();
-        _PAD = GameObject.Find("Trap").GetComponent<TrapMove>();
+        _Traps = GameObject.Find("Dungeuns").GetComponent<TrapMove>();
     }
 	
 	// Update is called once per frame
@@ -40,18 +34,18 @@ public class QuadInteraction : MonoBehaviour
         print("It was Wrong");
     }
 
-    // 주어진 Delay가 끝나면 불려질 함수
-    Action CallbackSwing = () =>
-    {
-        IsSwinging = false;
-        //_HM.transform.rotation = _HM.Origin_transform.rotation;
-        //print("CallBacked");
-    };
+    //// 주어진 Delay가 끝나면 불려질 함수
+    //Action CallbackSwing = () =>
+    //{
+    //    IsSwinging = false;
+    //    //_HM.transform.rotation = _HM.Origin_transform.rotation;
+    //    //print("CallBacked");
+    //};
 
-     Action CallbackBreak = () =>
-    {
-        IsBreaked = false;
-    };
+    // Action CallbackBreak = () =>
+    //{
+    //    IsBreaked = false;
+    //};
 
     public void SetCoolTime()
     {
@@ -73,33 +67,32 @@ public class QuadInteraction : MonoBehaviour
         if(other.tag == "LeftQuad" && !IsSwinging)
         {
             IsSwinging = true;
-            print("Left Quad Touched");
+            //print("Left Quad Touched");
 
-            _HM.LeftSwing();
+            _Traps.LeftSwing();
             Invoke("SetSwingTime", 1.0f);
         }
 
         if (other.tag == "RightQuad" && !IsSwinging)
         {
             IsSwinging = true;
-            print("Right Quad Touched");
+            //print("Right Quad Touched");
 
-            _HM.RightSwing();
+            _Traps.RightSwing();
             Invoke("SetSwingTime", 1.0f);
         }
 
         if (other.tag == "UpQuad" && !IsRotating)
         {
-            _PAD.RotatePad();
+            _Traps.RotatePad();
             IsRotating = true;
             Invoke("SetRotateTime", 1.2f);
         }
 
         if (other.tag == "DownQuad" && !IsBreaked)
         {
-            print("Up Quad Touched");
-            _LFD.Break(_LFD.LeftDoorGreed.rotation, _LFD.DoorSpeed, 0.0f, null);
-            _RTD.Break(_RTD.RightDoorGreed.rotation, _RTD.DoorSpeed, 0.0f, null);
+            //print("Up Quad Touched");
+            _Traps.RotateDoor();
             IsBreaked = true;
             Invoke("SetCoolTime", 1.4f);
         }

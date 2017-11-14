@@ -10,8 +10,7 @@ public class VideoScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        //Handheld.PlayFullScreenMovie("OpeningWithSound.mp4", Color.black, FullScreenMovieControlMode.Full);
-        //print("wow");
+        Invoke("GoToNextScene", 15.3f);
     }
 
     // Update is called once per frame

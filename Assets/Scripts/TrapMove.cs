@@ -11,47 +11,48 @@ public class TrapMove : MonoBehaviour
     public Transform RightHammer;
     public Transform Section3Pad;
 
-    public Transform LeftDoorGreed;
-    public Transform RightDoorGreed;
-
     public float DoorSpeed = 1.0f;
     public float HammerSpeed = 0.5f;
 
-    Animator LeftSwing_Ani;
-    Animator RightSwing_Ani;
-    Animator Section3Pad_Ani;
+    static Animator Section1Door_Ani;
+    static Animator LeftSwing_Ani;
+    static Animator RightSwing_Ani;
+    static Animator Section3Pad_Ani;
 
     // Use this for initialization
     void Start ()
     {
-        Origin_transform = transform;
-        LeftSwing_Ani = LeftHammer.GetComponentInChildren<Animator>();
-        RightSwing_Ani = RightHammer.GetComponentInChildren<Animator>();
-        Section3Pad_Ani = Section3Pad.GetComponent<Animator>();
+        LeftSwing_Ani = GameObject.Find("LeftHammer").GetComponent<Animator>();
+        RightSwing_Ani = GameObject.Find("RightHammer").GetComponent<Animator>();
+        Section1Door_Ani = GameObject.Find("field2").GetComponent<Animator>();
+        Section3Pad_Ani = GameObject.Find("Trap").GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        //transform.rotation = new Quaternion(transform.rotation.x + 1, transform.rotation.y, transform.rotation.z, transform.rotation.w);
-        //transform.rotation. = new Quaternion(transform.rotation.x + 1, transform.rotation.y, transform.rotation.z, transform.rotation.w);
-        //transform.eulerAngles = new Vector3(transform.rotation.x + 1, transform.rotation.y, transform.rotation.z);
+
 
     }
 
     public void LeftSwing()
     {
-        LeftSwing_Ani.SetTrigger("LeftSwing");
+        LeftSwing_Ani.SetTrigger("Swing");
     }
 
     public void RightSwing()
     {
-        RightSwing_Ani.SetTrigger("RightSwing");
+        RightSwing_Ani.SetTrigger("Swing");
     }
 
     public void RotatePad()
     {
         Section3Pad_Ani.SetTrigger("Rotate");
+    }
+
+    public void RotateDoor()
+    {
+        Section1Door_Ani.SetTrigger("Rotate");
     }
 
     public void Move(Vector3 dstPosition, float rotateTime, float delayTime, Action callback)
